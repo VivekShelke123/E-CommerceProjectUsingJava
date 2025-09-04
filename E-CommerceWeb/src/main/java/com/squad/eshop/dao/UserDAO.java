@@ -4,11 +4,11 @@ import com.squad.eshop.model.UserModel;
 import com.squad.eshop.util.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.Statement;
 import java.sql.ResultSet;
 
-public class UserDAO {
+public class UserDAO implements IUserDAO {
 
+	@Override
 	public boolean saveUser(UserModel user) {
 		
 		String sql = "insert into UserInfoTable(UserName,UserEmail,UserPass,UserAdd,UserPhone) values(?,?,?,?,?)";
@@ -28,6 +28,7 @@ public class UserDAO {
 		}
 	}
 	
+	@Override
 	public UserModel searchUser(String userEmail) {
 		String sql = "select * from UserInfoTable where userEmail=?";
 		UserModel user = null;

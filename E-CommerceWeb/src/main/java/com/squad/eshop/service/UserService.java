@@ -1,15 +1,20 @@
 package com.squad.eshop.service;
 
-import com.squad.eshop.dao.UserDAO;
+import com.squad.eshop.dao.IUserDAO;
 import com.squad.eshop.model.UserModel;
 
-public class UserService {
+public class UserService implements IUserService {
 
+	private IUserDAO userDao;
+	
+	public UserService(IUserDAO userDao){
+		this.userDao = userDao;
+	}
+	
+	@Override
 	public boolean registerUser(String userName, String userEmail, String userPass, String userAdd, String userPhone) {
 		
 		UserModel user = new UserModel( userName,  userEmail,  userPass,  userAdd,  userPhone);
-		
-		UserDAO userDao = new UserDAO();
 		
 		boolean ifSaved = userDao.saveUser(user);
 		
@@ -21,19 +26,15 @@ public class UserService {
 		
 	}
 	
-	public boolean loginUser(String userEmail,String userPass) {
+	@Override
+	public UserModel loginUser(String userEmail,String userPass) {
 		
-		UserDAO daoObj = new UserDAO();
+		UserModel user = userDao.searchUser(userEmail);
 		
-		UserModel user = daoObj.searchUser(userEmail);
 		
-		if(user == null) {
-			return false;
+		if(user!=null && userPass.equals(user.getUserPass())) {
+			return user;
 		}
-		
-		if(userPass.equals(user.getUserPass())) {
-			return true;
-		}
-		return false;
+		return null;
 	}
 }

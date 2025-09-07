@@ -10,7 +10,7 @@
 
 <body>
 	<div class="overflow-x-hidden">
-	<%@ include file="NavBar.jsp" %>
+	<%@ include file="../NavBar/NavBar.jsp" %>
 	
 	
 	

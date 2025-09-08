@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet"  href="HomeStyle.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/Home/HomeStyle.css" />
 </head>
 
 <body>
@@ -55,7 +55,7 @@
 	</div>
 	
 	</div>
-	<script src="HomeScript.js"></script>
+	<script src="${pageContext.request.contextPath}/Home/HomeScript.js"></script>
 	
 	<script
       type="module"

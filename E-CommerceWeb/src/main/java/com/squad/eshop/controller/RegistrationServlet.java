@@ -37,7 +37,7 @@ public class RegistrationServlet extends HttpServlet {
 		boolean success = userService.registerUser(userName, userEmail, userPass, userAdd, userPhone);
 		
 		if(success) {
-			response.sendRedirect("Login.html");
+			response.sendRedirect("Login/Login.html");
 		}else {
 			response.sendRedirect("Error.html");
 		}

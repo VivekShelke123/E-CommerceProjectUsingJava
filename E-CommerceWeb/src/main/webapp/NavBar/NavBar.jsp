@@ -37,7 +37,7 @@
                 <!--! Filtered Header -->
                 <div class="top-header w-screen flex flex-col items-center justify-between border-b">
                 <div class="gap-4 flex flex-col sm:flex-row w-full items-center justify-between p-6 md:px-24">
-                    <h1 class="font-semibold text-4xl text-gray-600"><a href="HomePage.jsp">Godrej-Kart</a></h1>
+                    <h1 class="font-semibold text-4xl text-gray-600"><a href="/E-CommerceWeb">Godrej-Kart</a></h1>
         
                     <!--SearchBar -->
                     <form class="relative w-full sm:w-3/5">
@@ -75,7 +75,7 @@
                 <nav class="my-4 hidden lg:flex justify-center">
                 <ul class="desktopNavbarUl flex justify-center items-center gap-12 font-sm font-bold text-gray-600">
                     <li class="nav_items relative group z-50">
-                    <a href="HomePage.jsp">HOME</a>
+                    <a href="/E-CommerceWeb/">HOME</a>
                     <span
                         class="absolute bottom-0 left-0 h-0.5 bg-red-400 transition-all duration-300 ease-in-out w-0 group-hover:w-full"
                     ></span>
@@ -117,7 +117,7 @@
                     <%
                     	if(true){
                     		out.println("<li class='relative group z-50'>"
-                            +"<a href='AdminPannel/Admin.jsp' class='inline-block py-2'>ADMIN</a>"
+                            +"<a href='/E-CommerceWeb/AdminPannel/Admin.jsp' class='inline-block py-2'>ADMIN</a>"
                             +"<!-- Underline animation -->"
                            + "<span class='absolute bottom-0 left-0 h-0.5 bg-red-400 transition-all duration-300 ease-in-out w-0 group-hover:w-full'></span>"
                            + "<ul class='hoveredItems w-52 absolute top-10 hidden group-hover:flex flex-col items-start justify-start gap-2 p-4 rounded-xl shadow-lg border font-normal bg-white z-50'>"

@@ -1,4 +1,5 @@
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -49,11 +50,23 @@
                     </form>
         
                     <div class="icons hidden mr-2 text-3xl md:flex gap-8 text-gray-600">
-                    <div class="relative">
-                        <ion-icon name="person-outline">
-        
-                        </ion-icon>
-                    </div>
+                    
+                   
+					
+					<div class="relative group z-[300] text-sm font-medium text-gray-700">
+					  <!-- Icon Trigger -->
+					  <div class="flex items-center cursor-pointer hover:text-red-400 transition duration-200">
+					  <a href='/E-CommerceWeb/UserProfile/UserDashboard.jsp'><ion-icon name="person-outline" class="text-3xl"></ion-icon></a> 
+					  </div>
+					
+					  <!-- Dropdown Menu -->
+					  <div class="hoveredItems w-48 absolute top-full mt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible flex flex-col items-start justify-start gap-2 p-3 rounded-lg shadow-xl border bg-white z-[301] transition-all duration-300 ease-in-out">
+					    <a href='/E-CommerceWeb/UserProfile/EditProfile.jsp' class='block w-full px-2 py-1 hover:text-red-400 transition'>✏️ Update Profile</a>
+					    <a href='/E-CommerceWeb/UserProfile/UserLogout.jsp' class='block w-full px-2 py-1 hover:text-red-400 transition'>🚪 Logout</a>
+					  </div>
+					</div>
+
+                    
                     <div class="relative">
                         <span
                         class="text-xs text-center font-semibold text-white absolute -top-2 -right-2 w-4 h-4 bg-red-400 rounded-full">0</span>
@@ -64,6 +77,7 @@
                         class="text-xs text-center font-semibold text-white absolute -top-2 -right-2 w-4 h-4 bg-red-400 rounded-full">0</span>
                         <ion-icon name="bag-handle-outline"></ion-icon>
                     </div>
+                    
                     </div>
                 </div>
                 </div>

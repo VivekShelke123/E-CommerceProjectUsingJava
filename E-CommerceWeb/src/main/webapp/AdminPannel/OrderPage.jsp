@@ -20,9 +20,23 @@
 
 </head>
 <body class="bg-gray-100 text-gray-800 overflow-x-hidden">
+<%
+    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+    response.setHeader("Pragma", "no-cache");
+    response.setDateHeader("Expires", 0);
+%>
 
 
         <%@ include file="../NavBar/NavBar.jsp" %>
+
+
+<%
+    if(request.getSession(false) == null || 
+       session.getAttribute("role") == null || 
+       "user".equals(session.getAttribute("role"))){
+        response.sendRedirect("/E-CommerceWeb/Error.html");
+    }
+%>
 
 <div class="flex h-screen">
     <%@ include file="AdminNavBar.html" %>

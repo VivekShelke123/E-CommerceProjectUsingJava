@@ -11,7 +11,7 @@
       type="image/x-icon"
     />
     <!--! css link -->
-    <link rel="stylesheet" href="./assets/style.css" />
+ <!--   <link rel="stylesheet" href="./assets/style.css" /> -->
     <!--? swiperjs cdn link -->
     <link
       rel="stylesheet"
@@ -115,14 +115,15 @@
                     <!--? hoverItems -->
                     </li>
                     <%
-                    	if(true){
+                    	
+                    	if("admin".equals(session.getAttribute("role")) && request.getSession(false) != null){
                     		out.println("<li class='relative group z-50'>"
                             +"<a href='/E-CommerceWeb/AdminPannel/Admin.jsp' class='inline-block py-2'>ADMIN</a>"
                             +"<!-- Underline animation -->"
                            + "<span class='absolute bottom-0 left-0 h-0.5 bg-red-400 transition-all duration-300 ease-in-out w-0 group-hover:w-full'></span>"
                            + "<ul class='hoveredItems w-52 absolute top-10 hidden group-hover:flex flex-col items-start justify-start gap-2 p-4 rounded-xl shadow-lg border font-normal bg-white z-50'>"
-                                +"<li><a href='../AdminPannel/ProductPage.jsp'>Add Product</a></li>"
-                             +"   <li><a href=''../AdminPannel/CouponPage.jsp'>Add Coupon</a></li>"
+                                +"<li><a href='/E-CommerceWeb/AdminPannel/ProductPage.jsp'>Add Product</a></li>"
+                             +"   <li><a href='/E-CommerceWeb/AdminPannel/CouponPage.jsp'>Add Coupon</a></li>"
                             +"</ul>"
                             +"</li>");
                     	};
@@ -148,7 +149,7 @@
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
     ></script>
     <!--!javascript file  -->
-    <script type="module" src="./assets/index.js"></script>
+    <!-- <script type="module" src="./assets/index.js"></script> -->
 	
 </body>
 </html>

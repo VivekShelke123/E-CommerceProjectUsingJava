@@ -17,6 +17,18 @@
         <img src="Logo.png" alt="Logo" class="h-48 w-auto">
       </div>
       <form method="GET" action="/E-CommerceWeb/LoginServlet">
+      	<!-- For User Or Admin Login -->
+
+		<div class="mb-4">
+  			<label class="block text-sm font-medium text-gray-700 mb-2">Login as</label>
+ 		 	<div class="flex items-center justify-between bg-gray-200 rounded-full p-1 w-36">
+    			<input type="hidden" name="role" id="roleInput" value="user">
+    			<button type="button" id="toggleRole" value="user"
+      			class=" w-full flex text-white text-sm justify-between font-medium transition-all duration-300">
+      			<p id="userRole" class="inline bg-blue-600 py-1 px-4 rounded-full ">User</p><p id="adminRole" class="inline  py-1 px-4 rounded-full ">Admin</p>
+    			</button>
+  			</div>
+		</div>
         <!-- Email -->
         <div>
           <label for="email" class="block text-sm font-medium text-gray-700">Email address</label>
@@ -39,11 +51,32 @@
           </button>
           <p class="text-sm text-gray-600 text-center">
             Don't have an account?
-            <a href="Registeration.html" class="text-blue-600 hover:text-blue-500 font-medium">Register here</a>
+            <a href="/E-CommerceWeb/Registration/Registeration.html" class="text-blue-600 hover:text-blue-500 font-medium">Register here</a>
           </p>
         </div>
       </form>
     </div>
   </div>
+  <script>
+  const toggleBtn = document.getElementById('toggleRole');
+  const roleInput = document.getElementById('roleInput');
+  const userRole = document.getElementById('userRole');
+  const adminRole = document.getElementById('adminRole');
+
+  toggleBtn.addEventListener('click', () => {
+    if (toggleBtn.value === 'User') {
+      toggleBtn.value = 'Admin';
+      roleInput.value = 'admin';
+      userRole.classList.remove('bg-blue-600');
+      adminRole.classList.add('bg-blue-600');
+    } else {
+      toggleBtn.value = 'User';
+      roleInput.value = 'user';
+      adminRole.classList.remove('bg-blue-600');
+      userRole.classList.add('bg-blue-600');
+    }
+  });
+</script>
+
 </body>
 </html>

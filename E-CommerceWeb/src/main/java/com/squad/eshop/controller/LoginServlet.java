@@ -12,7 +12,12 @@ import javax.servlet.http.HttpSession;
 
 import com.squad.eshop.dao.UserDAO;
 import com.squad.eshop.dao.IUserDAO;
+import com.squad.eshop.dao.AdminDao;
+import com.squad.eshop.dao.IAdminDAO;
+import com.squad.eshop.model.AdminModel;
 import com.squad.eshop.model.UserModel;
+import com.squad.eshop.service.AdminService;
+import com.squad.eshop.service.IAdminService;
 import com.squad.eshop.service.IUserService;
 import com.squad.eshop.service.UserService;
 
@@ -24,34 +29,53 @@ public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private IUserService userService;
+	private IAdminService adminService;
 
     @Override
     public void init() throws ServletException {
         // Inject dependency manually
         IUserDAO userDao = new UserDAO();
+        IAdminDAO adminDao = new AdminDao();
+        
         userService = new UserService(userDao);
+        adminService = new AdminService(adminDao); 
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String userEmail = request.getParameter("email");
-		String userPass = request.getParameter("password");
+		String email = request.getParameter("email");
+		String pass = request.getParameter("password");
+		String role = request.getParameter("role");
 		
-		UserModel user = userService.loginUser(userEmail, userPass);
-		
-		if(user!=null) {
-			response.setContentType("text/html");
-			PrintWriter out = response.getWriter();
+		if("admin".equals(role)) {
 			
-			HttpSession session = request.getSession();
-			session.setAttribute("user", user);
+			AdminModel admin = adminService.loginAdmin(email, pass);
 			
-			out.println("<html><body>");
-			out.println("<script type='text/javascript'>");
-			out.println("alert('Login successful!');");
-			out.println("</script>");
-			out.println("</body></html>");
-		}else {
+			if(admin!=null) {
+				HttpSession session = request.getSession();
+				session.setAttribute("admin", admin);
+				session.setAttribute("role","admin");
+				response.sendRedirect("/E-CommerceWeb");
+				
+			}else {
+				response.sendRedirect("Error.html");
+			}
+			
+		}
+		else if("user".equals(role)) {
+			UserModel user = userService.loginUser(email, pass);
+			
+			if(user!=null) {
+				HttpSession session = request.getSession();
+				session.setAttribute("user", user);
+				session.setAttribute("role","user");
+				response.sendRedirect("/E-CommerceWeb");
+				
+			}else {
+				response.sendRedirect("Error.html");
+			}
+		}
+		else {
 			response.sendRedirect("Error.html");
 		}
 		

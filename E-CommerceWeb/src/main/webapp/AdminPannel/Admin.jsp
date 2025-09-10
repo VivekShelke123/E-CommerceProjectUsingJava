@@ -19,14 +19,12 @@
     </style>
     
     </head>
-    <body class="bg-gray-100 text-gray-800 overflow-x-hidden">
+    <body class="bg-emerald-50 text-gray-800 overflow-x-hidden">
     <%
     response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
     response.setHeader("Pragma", "no-cache");
     response.setDateHeader("Expires", 0);
 	%>
-    
-
 	<%@ include file="../NavBar/NavBar.jsp" %>
 	
 	<%
@@ -35,12 +33,12 @@
        "user".equals(session.getAttribute("role"))){
         response.sendRedirect("/E-CommerceWeb/Error.html");
     }
-%>
+	%>
     <div class="flex h-screen">
         <%@ include file="AdminNavBar.html" %>
 
         <!-- Main content -->
-        <main class="flex-1 p-6 overflow-y no-scrollbar">
+        <main class="flex-1 p-6 overflow-y-auto" style="overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none;">
         <!-- Top bar -->
         <div class="flex items-center justify-between mb-6">
             <h1 class="text-2xl font-bold">Dashboard</h1>

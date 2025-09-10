@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-   <%@ page import="java.sql.*, com.squad.eshop.dao.UserDAO, com.squad.eshop.model.UserModel, com.squad.eshop.util.DBConnection" %>
+<%@ page import="java.sql.*, com.squad.eshop.dao.UserDAO, com.squad.eshop.model.UserModel, com.squad.eshop.util.DBConnection" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,7 +42,7 @@
   }
 %>
 
-	<header class="header w-full">
+	<header class="header w-full bg-rose-100" >
                 <!--! Filtered Header -->
                 <div class="top-header w-screen flex flex-col items-center justify-between border-b">
                 <div class="gap-4 flex flex-col sm:flex-row w-full items-center justify-between p-6 md:px-24">
@@ -61,11 +61,10 @@
                     
                    
 					<%
-                    	if(role.equals("admin")){%>
-                            
-                            <div class="relative group z-[300] text-sm font-medium text-gray-700">
+                    if(role.equals("admin")){%> 
+                    <div class="relative group z-[300] text-sm font-medium text-gray-700">
+                      
 					  <!-- Icon Trigger -->
-					  
 					  <div class="flex items-center cursor-pointer hover:text-red-400 transition duration-200">
 					  <a href='/E-CommerceWeb/AdminPannel/Admin.jsp'><ion-icon name="person" class="text-3xl"></ion-icon></a> 
 					  </div>
@@ -77,10 +76,10 @@
 					    <a href='/E-CommerceWeb/LogoutServlet' class='block w-full px-2 py-1 hover:text-red-400 transition'>Logout</a>
 					  </div>
 					</div>
-                    	
-                    	<% }else if(role.equals("user")){
-                    	%>
-                    	<div class="relative group z-[300] text-sm font-medium text-gray-700">
+                    <% }
+                    else if(role.equals("user")){
+                    %>
+                    <div class="relative group z-[300] text-sm font-medium text-gray-700">
 					  <!-- Icon Trigger -->
 					  
 					  <div class="flex items-center cursor-pointer hover:text-red-400 transition duration-200">
@@ -93,22 +92,7 @@
 					    <a href='/E-CommerceWeb/UserProfile/UserLogout.jsp' class='block w-full px-2 py-1 hover:text-red-400 transition'>🚪 Logout</a>
 					  </div>
 					</div>
-                    	<% }
-                    	else{%>
-          
-                    	<div class="relative group z-[300] text-sm font-medium text-gray-700">
-					  <!-- Icon Trigger -->
-					  
-					  <div class="flex items-center cursor-pointer hover:text-red-400 transition duration-200">
-					  <a href='/E-CommerceWeb/Login/Login.html'><img alt="Login" class="w-8" src="${pageContext.request.contextPath}/NavBar/login.png"></a> 
-					  </div>
-					  </div>
-                    	<%} %>
-                    
-					
-
-                    
-                    <div class="relative">
+					<div class="relative">
                         <span
                         class="text-xs text-center font-semibold text-white absolute -top-2 -right-2 w-4 h-4 bg-red-400 rounded-full">0</span>
                         <ion-icon name="heart-outline"></ion-icon>
@@ -118,6 +102,20 @@
                         class="text-xs text-center font-semibold text-white absolute -top-2 -right-2 w-4 h-4 bg-red-400 rounded-full">0</span>
                         <ion-icon name="bag-handle-outline"></ion-icon>
                     </div>
+                    <% }
+                    else{
+                    %>
+                    <div class="relative group z-[300] text-sm font-medium text-gray-700">
+					  <!-- Icon Trigger -->
+					  
+					  <div class="flex items-center cursor-pointer hover:text-red-400 transition duration-200">
+					  <a href='/E-CommerceWeb/Login/Login.html'><img alt="Login" class="w-8" src="${pageContext.request.contextPath}/NavBar/login.png"></a> 
+					  </div>
+					  </div>
+                    <% } 
+                    %>
+                    
+                    
                     
                     </div>
                 </div>

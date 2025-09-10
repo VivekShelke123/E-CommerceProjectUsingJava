@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*, com.squad.eshop.dao.UserDAO, com.squad.eshop.model.UserModel, com.squad.eshop.util.DBConnection" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,13 +9,24 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-
+<% 
+  	UserModel currUser=null; 
+	if(request.getSession(false)==null || "admin".equals(session.getAttribute("role")) ){
+		  response.sendRedirect("/E-CommerceWeb/Error.html");
+		  return;
+	}
+	currUser = (UserModel)session.getAttribute("user");
+	if (currUser == null) {
+		  response.sendRedirect("/E-CommerceWeb/Error.html");
+		  return;
+	}
+%>
 <!-- Sidebar Container -->
 <aside class="w-64 h-screen bg-white shadow-lg flex-shrink-0 flex flex-col">
 
   <!-- Header with title and user icon -->
   <div class="flex items-center justify-between px-6 py-4 border-b">
-    <h2 class="text-xl font-bold text-red-500">User Panel</h2>
+    <h2 class="text-xl font-bold text-red-500">Hi, <%= currUser.getUserName() %></h2>
     <ion-icon name="person-outline" class="text-2xl text-gray-600"></ion-icon>
   </div>
 

@@ -38,8 +38,6 @@
 <body>
 
 <%
-  
-  
   if(session == null 
 			|| session.getAttribute("categoryChange") == null 
 			|| "false".equals((String)session.getAttribute("categoryChange"))
@@ -110,12 +108,12 @@ System.out.println("inside Home Navbar Second Time");
 					<div class="relative">
                         <span
                         class="text-xs text-center font-semibold text-white absolute -top-2 -right-2 w-4 h-4 bg-red-400 rounded-full">0</span>
-                        <ion-icon name="heart-outline"></ion-icon>
+                        <a href="/E-Commerceweb/Wishlist/Wishlist.html"><ion-icon name="heart-outline"></ion-icon></a>
                     </div>
                     <div class="relative">
                         <span
                         class="text-xs text-center font-semibold text-white absolute -top-2 -right-2 w-4 h-4 bg-red-400 rounded-full">0</span>
-                        <ion-icon name="bag-handle-outline"></ion-icon>
+                        <a href="/E-Commerceweb/Cart/Cart.html"><ion-icon name="bag-handle-outline"></ion-icon></a>
                     </div>
                     <% }
                     else{

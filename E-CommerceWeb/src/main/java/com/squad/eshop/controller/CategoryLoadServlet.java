@@ -44,6 +44,7 @@ public class CategoryLoadServlet extends HttpServlet {
 		}
 		
 		String redirectTo = request.getParameter("redirectTo");
+		System.out.println(redirectTo);
 		if (redirectTo == null || redirectTo.isEmpty()) {
 		    redirectTo = request.getContextPath()+"/"; // default fallback
 		}

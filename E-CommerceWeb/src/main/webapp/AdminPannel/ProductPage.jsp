@@ -31,11 +31,17 @@
         <%@ include file="../NavBar/NavBar.jsp" %>
         
 <%
-    if(request.getSession(false) == null || 
+    if(session == null || 
        session.getAttribute("role") == null || 
        "user".equals(session.getAttribute("role"))){
         response.sendRedirect("/E-CommerceWeb/Error.html");
     }
+
+	if("false".equals((String)session.getAttribute("categoryChange")) 
+			|| getServletContext().getAttribute("categoryList")==null){
+		
+		response.sendRedirect("/E-CommerceWeb/CategoryLoadServlet?redirectTo=/E-CommerceWeb/AdminPannel/ProductPage.jsp");
+	}
 %>
 
 <div class="flex h-screen">
@@ -47,56 +53,58 @@
             <div class="flex items-center justify-between mb-6">
               <h1 class="text-2xl font-bold">Manage Products</h1>
               <div class="flex items-center gap-4">
-                <input type="text" placeholder="Search product to edit..."
-                       class="px-3 py-2 border rounded-lg w-64" />
-                <img src="https://via.placeholder.com/40" alt="Admin"
-                     class="w-10 h-10 rounded-full border">
+                
               </div>
             </div>
       
             <!-- Add Product Form -->
             <div class="bg-white rounded-xl shadow p-6 mb-6">
               <h2 class="text-xl font-semibold mb-4">Add New Product</h2>
-              <form class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              
+              <form action="" method="post" class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              
                 <!-- Image URL -->
                 <div>
                   <label class="block mb-1 text-gray-600">Image URL</label>
-                  <input type="url" placeholder="https://example.com/product.jpg"
+                  <input type="url" placeholder="https://example.com/product.jpg" name="imgUrl"
                          class="w-full px-3 py-2 border rounded-lg" required />
                 </div>
                 <!-- Product Name -->
                 <div>
                   <label class="block mb-1 text-gray-600">Product Name</label>
-                  <input type="text" placeholder="Enter product name"
+                  <input type="text" placeholder="Enter product name" name="prodName"
                          class="w-full px-3 py-2 border rounded-lg" required />
                 </div>
                 <!-- Description -->
                 <div class="sm:col-span-2">
                   <label class="block mb-1 text-gray-600">Description</label>
-                  <textarea placeholder="Enter product description..."
-                            class="w-full px-3 py-2 border rounded-lg" rows="3"></textarea>
+                  <textarea placeholder="Enter product description..." name="prodDesc"
+                            class="w-full px-3 py-2 border rounded-lg" rows="3" required></textarea>
                 </div>
                 <!-- Price -->
                 <div>
                   <label class="block mb-1 text-gray-600">Price ($)</label>
-                  <input type="number" placeholder="120"
+                  <input type="number" placeholder="120" name="prodPrice"
                          class="w-full px-3 py-2 border rounded-lg" required />
                 </div>
                 <!-- Quantity -->
                 <div>
                   <label class="block mb-1 text-gray-600">Quantity</label>
-                  <input type="number" placeholder="50"
+                  <input type="number" placeholder="50" name="prodQuantity"
                          class="w-full px-3 py-2 border rounded-lg" required />
                 </div>
                 <!-- Category -->
                 <div class="sm:col-span-2">
                   <label class="block mb-1 text-gray-600">Category</label>
-                  <select class="w-full px-3 py-2 border rounded-lg">
-                    <option>Men's</option>
-                    <option>Women's</option>
-                    <option>Jewelry</option>
-                    <option>Perfume</option>
-                    <option>Other</option>
+                  <select class="w-full px-3 int py-2 border rounded-lg" name="categoryId" required>
+                  	<option>Select Category</option>
+                 	<%
+    						if(categoryList!=null){
+    							for(int i = 0 ; i < categoryList.size();i++){
+    								out.println("<option value='"+categoryList.get(i).getCategoryId()+"'>"+categoryList.get(i).getCategoryName()+" ("+categoryList.get(i).getAssociateTo().getAssociateName()+")"+"</option>");
+    							}
+    						}
+    					%>
                   </select>
                 </div>
                 <!-- Submit Button -->

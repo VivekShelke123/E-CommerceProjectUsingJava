@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.sql.*, com.squad.eshop.dao.UserDAO, com.squad.eshop.model.UserModel, com.squad.eshop.util.DBConnection" %>
+
+<%@ page import="java.sql.*, com.squad.eshop.dao.UserDAO, com.squad.eshop.model.UserModel, com.squad.eshop.util.DBConnection,java.util.*,com.squad.eshop.model.CategoryModel" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,10 +38,23 @@
 <body>
 
 <%
-  String role = "visit";
-  if (session != null && session.getAttribute("role") != null) {
-    role = (String) session.getAttribute("role");
-  }
+  
+  
+  if(session == null 
+			|| session.getAttribute("categoryChange") == null 
+			|| "false".equals((String)session.getAttribute("categoryChange"))
+			||getServletContext().getAttribute("categoryList")==null)
+  {
+	  System.out.println("inside Home Navbar first time");
+				response.sendRedirect("/E-CommerceWeb/CategoryLoadServlet?redirectTo=/E-CommerceWeb");
+	}
+	
+System.out.println("inside Home Navbar Second Time");
+	ArrayList<CategoryModel> categoryList = (ArrayList<CategoryModel>)getServletContext().getAttribute("categoryList");
+	String role = "visit";
+	  if (session != null && session.getAttribute("role") != null) {
+	    role = (String) session.getAttribute("role");
+	  }
 %>
 
 	<header class="header w-full bg-rose-100" >
@@ -134,11 +149,23 @@
                     ></span>
                     </li>
                     <li class="nav_items relative group z-50">
-                    <a href="#Categories">CATEGORIES</a>
-                    <span
-                        class="absolute bottom-0 left-0 h-0.5 bg-red-400 transition-all duration-300 ease-in-out w-0 group-hover:w-full"
-                    ></span>
-                    </li>
+  						<a href="#Categories">CATEGORIES</a>
+  						<span
+   						 class="absolute bottom-0 left-0 h-0.5 bg-red-400 transition-all duration-300 ease-in-out w-0 group-hover:w-full"
+  						></span>
+
+  						<!-- Hover Dropdown -->
+  						<ul class="flex flex-col absolute top-full mt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible items-start justify-start gap-2 p-3 rounded-lg shadow-xl border bg-white z-[301] transition-all duration-300 ease-in-out">
+    					<%
+    						if(categoryList!=null){
+    							for(int i = 0 ; i < categoryList.size();i++){
+    								out.println("<li class='cursor-pointer hover:text-red-400 transition'><a>"+categoryList.get(i).getCategoryName()+"</a></li>");
+    							}
+    						}
+    					%>
+    
+  						</ul>
+					</li>
         
                     <li class="nav_items relative group z-50">
                     <a href="#Men">MEN'S</a>

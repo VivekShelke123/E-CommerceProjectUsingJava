@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-   <%@ page import="java.sql.*, com.squad.eshop.dao.UserDAO, com.squad.eshop.model.UserModel, com.squad.eshop.util.DBConnection" %>
+<%@ page import="java.sql.*, com.squad.eshop.dao.UserDAO, com.squad.eshop.model.UserModel, com.squad.eshop.util.DBConnection" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,22 +18,9 @@
     }
   </style>
 </head>
-<body class="bg-gray-100 text-gray-800 overflow-x-hidden">
+<body class="bg-emerald-50 text-gray-800 overflow-x-hidden">
 
   <%@ include file="../NavBar/NavBar.jsp" %>
-  
-  <% 
-  UserModel currUser=null; 
-  if(request.getSession(false)==null || "admin".equals(session.getAttribute("role")) ){
-	  response.sendRedirect("/E-CommerceWeb/Error.html");
-	  return;
-  }
-  currUser = (UserModel)session.getAttribute("user");
-  if (currUser == null) {
-	  response.sendRedirect("/E-CommerceWeb/Error.html");
-	  return;
-	}
-  %>
 
   <div class="flex h-screen">
     <%@ include file="UserSidebar.jsp" %>
@@ -41,7 +28,6 @@
     <!-- Main content -->
     <main class="flex-1 p-6 overflow-y-auto" style="overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none;">
       <!-- Top bar -->
-
 
       <!-- Stats cards -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">

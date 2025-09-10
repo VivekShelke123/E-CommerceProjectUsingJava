@@ -9,10 +9,8 @@
 </head>
 
 <body>
-	<div class="overflow-x-hidden">
+	<div class="overflow-x-hidden bg-emerald-50">
 	<%@ include file="../NavBar/NavBar.jsp" %>
-	
-	
 	
 	<!-- Carousel Slider -->
 	

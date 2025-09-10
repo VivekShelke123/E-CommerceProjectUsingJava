@@ -20,7 +20,7 @@
     }
   </style>
 </head>
-<body class="bg-gray-100 text-gray-800 overflow-x-hidden">
+<body class="bg-emerald-50 text-gray-800 overflow-x-hidden">
 	<%
     response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
     response.setHeader("Pragma", "no-cache");
@@ -28,18 +28,7 @@
 	%>
 
   <%@ include file="../NavBar/NavBar.jsp" %>
-  <% 
-  UserModel currUser=null; 
-  if(request.getSession(false)==null || "admin".equals(session.getAttribute("role")) ){
-	  response.sendRedirect("/E-CommerceWeb/Error.html");
-	  return;
-  }
-  currUser = (UserModel)session.getAttribute("user");
-  if (currUser == null) {
-	  response.sendRedirect("/E-CommerceWeb/Error.html");
-	  return;
-	}
-  %>
+
   <div class="flex h-screen">
     <%@ include file="UserSidebar.jsp" %>
 

@@ -10,6 +10,19 @@
 <body class="bg-gray-100 text-gray-800 overflow-x-hidden">
 
   <%@ include file="../NavBar/NavBar.jsp" %>
+  
+  <% 
+  UserModel currUser=null; 
+  if(request.getSession(false)==null || "admin".equals(session.getAttribute("role")) ){
+	  response.sendRedirect("/E-CommerceWeb/Error.html");
+	  return;
+  }
+  currUser = (UserModel)session.getAttribute("user");
+  if (currUser == null) {
+	  response.sendRedirect("/E-CommerceWeb/Error.html");
+	  return;
+	}
+  %>
   <div class="flex h-screen">
     <%@ include file="UserSidebar.jsp" %>
 

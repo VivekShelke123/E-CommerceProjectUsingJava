@@ -22,7 +22,7 @@
       <h2 class="text-2xl font-bold text-red-500 mb-4 text-center">Confirm Logout</h2>
       <p class="text-gray-700 text-center mb-6">Are you sure you want to log out?</p>
       <div class="flex justify-center gap-6">
-        <form action="LogoutServlet" method="post">
+        <form action="/E-CommerceWeb/LogoutServlet" method="get">
           <button type="submit" class="bg-red-500 text-white px-6 py-2 rounded-lg hover:bg-red-600 transition-all duration-200 shadow-md">Confirm</button>
         </form>
         <a href="UserDashboard.jsp" class="bg-gray-300 text-gray-800 px-6 py-2 rounded-lg hover:bg-gray-400 transition-all duration-200 shadow-sm">Cancel</a>

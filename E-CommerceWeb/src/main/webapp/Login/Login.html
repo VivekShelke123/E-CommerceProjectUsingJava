@@ -17,13 +17,15 @@
         <img src="Logo.png" alt="Logo" class="h-48 w-auto">
       </div>
       <form method="GET" action="/E-CommerceWeb/LoginServlet">
+      
+      
       	<!-- For User Or Admin Login -->
 
 		<div class="mb-4">
   			<label class="block text-sm font-medium text-gray-700 mb-2">Login as</label>
  		 	<div class="flex items-center justify-between bg-gray-200 rounded-full p-1 w-36">
     			<input type="hidden" name="role" id="roleInput" value="user">
-    			<button type="button" id="toggleRole" value="user"
+    			<button type="button" id="toggleRole" value="User"
       			class=" w-full flex text-white text-sm justify-between font-medium transition-all duration-300">
       			<p id="userRole" class="inline bg-blue-600 py-1 px-4 rounded-full ">User</p><p id="adminRole" class="inline  py-1 px-4 rounded-full ">Admin</p>
     			</button>
